@@ -2,7 +2,7 @@ module RubyWarrior
   class Config
     class << self
       attr_accessor :delay, :in_stream, :out_stream, :practice_level
-      attr_writer :path_prefix, :skip_input
+      attr_writer :path_prefix, :skip_input, :prompt_to_continue
       
       def path_prefix
         @path_prefix || "."
@@ -10,6 +10,10 @@ module RubyWarrior
       
       def skip_input?
         @skip_input
+      end
+
+      def prompt_to_continue?
+        defined?(@prompt_to_continue) ? @prompt_to_continue : true
       end
       
       def reset
